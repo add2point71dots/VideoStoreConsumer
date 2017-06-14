@@ -2,6 +2,7 @@ import Backbone from 'backbone';
 import _ from 'underscore';
 import $ from 'jquery';
 import Movie from '../models/movie.js';
+import MovieList from '../collections/movie_list.js';
 import MovieView from '../views/movie_view.js';
 
 var MovieListView = Backbone.View.extend({
@@ -22,6 +23,25 @@ var MovieListView = Backbone.View.extend({
       that.$('#movie-list').append(myMovieView.render().el);
     });
     return this;
+  },
+  events: {
+    'click #search-button': 'searchMovies'
+  },
+  searchMovies: function() {
+    var myMovieSearch = new MovieList();
+    // this.model.create(myMovieSearch);
+    myMovieSearch.fetch({ data: this.getFormData() });
+    var myMovieSearchView = new MovieListView({
+      model: myMovieSearch,
+      template: _.template($('#movie-item-template').html()),
+      el: 'body'
+    });
+    myMovieSearchView.render();
+  },
+  getFormData: function() {
+    return {
+      query: this.$('#query').val()
+    };
   }
 });
 

@@ -5,12 +5,17 @@
     <link rel="stylesheet" type="text/css" href="css/_settings.css">
     <link rel="stylesheet" type="text/css" href="css/foundation.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <title>Backbone Baseline</title>
+    <title>Video Store</title>
   </head>
   <body>
-  <main>
-    <ul id="movie-list"></ul>
-  </main>
+    <header>
+      <h1>Video Store</h1>
+    </header>
+    <main>
+      <input type="text" id="query" placeholder="Search for movies">
+      <button id="search-button" class="button">Search</button>
+      <ul id="movie-list"></ul>
+    </main>
 
     <script id="movie-item-template" type="text/template">
       <img src="<%- movie.image_url %>" alt="<%- movie.title %>">
