@@ -8,8 +8,14 @@
     <title>Backbone Baseline</title>
   </head>
   <body>
+  <main>
+    <ul id="movie-list"></ul>
+  </main>
 
+    <script id="movie-item-template" type="text/template">
+      <img src="<%- movie.image_url %>" alt="<%- movie.title %>">
+      <h3><%- movie.title %></h3>
+    </script>
     <script src="/app.bundle.js"></script>
-
   </body>
   </html>

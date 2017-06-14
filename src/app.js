@@ -8,9 +8,15 @@ import MovieList from './collections/movie_list.js';
 import MovieView from './views/movie_view.js';
 import MovieListView from './view/movie_list_view.js';
 
+var myMovieList = new MovieList();
+myMovieList.fetch();
+
 // ready to go
 $(document).ready(function() {
-
-  $('section.main-content').append('<p>Hello World!</p>');
-
+  var myMovieListView = new MovieListView({
+    model: myMovieList,
+    template: _.template($('#movie-item-template').html()),
+    el: 'body'
+  });
+  myMovieListView.render();
 });
