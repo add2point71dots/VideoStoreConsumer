@@ -8,6 +8,7 @@ import MovieView from '../views/movie_view.js';
 var MovieListView = Backbone.View.extend({
   initialize: function(params) {
     this.template = params.template;
+    this.searched = params.searched;
     this.listenTo(this.model, 'update', this.render);
   },
   render: function() {
@@ -18,6 +19,7 @@ var MovieListView = Backbone.View.extend({
       var myMovieView = new MovieView({
         model: movie,
         template: that.template,
+        searched: that.searched,
         tagName: 'li'
       });
       that.$('#movie-list').append(myMovieView.render().el);
@@ -34,7 +36,8 @@ var MovieListView = Backbone.View.extend({
     var myMovieSearchView = new MovieListView({
       model: myMovieSearch,
       template: _.template($('#movie-item-template').html()),
-      el: 'body'
+      el: 'body',
+      searched: true
     });
     myMovieSearchView.render();
   },

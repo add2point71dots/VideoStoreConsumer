@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/_settings.css">
     <link rel="stylesheet" type="text/css" href="css/foundation.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <title>Video Store</title>
-  </head>
-  <body>
+</head>
+<body>
     <header>
-      <h1>Video Store</h1>
+        <h1>Video Store</h1>
     </header>
     <main>
-      <input type="text" id="query" placeholder="Search for movies">
-      <button id="search-button" class="button">Search</button>
-      <ul id="movie-list"></ul>
+        <input type="text" id="query" placeholder="Search for movies">
+        <button id="search-button" class="button">Search</button>
+        <ul id="movie-list"></ul>
     </main>
 
     <script id="movie-item-template" type="text/template">
-      <img src="<%- movie.image_url %>" alt="<%- movie.title %>">
-      <h3><%- movie.title %></h3>
-    </script>
-    <script src="/app.bundle.js"></script>
-  </body>
-  </html>
+        <img src="<%- movie.image_url %>" alt="<%- movie.title %>">
+        <h3><%- movie.title %></h3>
+        <% if (searched){ %>
+            <button class='add-movie button'>Pick Me!!</button>
+        <% } %>
+        </script>
+        <script src="/app.bundle.js"></script>
+    </body>
+    </html>
