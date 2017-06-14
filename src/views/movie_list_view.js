@@ -23,6 +23,11 @@ var MovieListView = Backbone.View.extend({
         tagName: 'li'
       });
       that.$('#movie-list').append(myMovieView.render().el);
+      that.listenTo(myMovieView, 'addMovie', function(movie) {
+        console.log("hey");
+        var newMovie = new Movie(movie);
+        this.model.create(newMovie);
+      });
     });
     return this;
   },

@@ -15,6 +15,13 @@ var MovieView = Backbone.View.extend({
 
         this.$el.html(compiledTemplate);
         return this;
+    },
+    events: {
+      'click .add-movie': 'clickedAddMovie'
+    },
+    clickedAddMovie: function() {
+      console.log("clicked add movie");
+      this.trigger('addMovie', this.model);
     }
 });
 
