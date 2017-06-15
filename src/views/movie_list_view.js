@@ -24,7 +24,6 @@ var MovieListView = Backbone.View.extend({
       });
       that.$('#movie-list').append(myMovieView.render().el);
       that.listenTo(myMovieView, 'addMovie', function(movie) {
-        console.log("movie is ", movie);
         var newMovie = new Movie(movie);
         this.model.create(newMovie);
       });
@@ -38,6 +37,7 @@ var MovieListView = Backbone.View.extend({
     this.model.fetch({ data: this.getFormData() });
     this.searched = true;
   },
+
   getFormData: function() {
     return {
       query: this.$('#query').val()
