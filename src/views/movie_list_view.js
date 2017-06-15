@@ -24,8 +24,10 @@ var MovieListView = Backbone.View.extend({
       });
       that.$('#movie-list').append(myMovieView.render().el);
       that.listenTo(myMovieView, 'addMovie', function(movie) {
-        console.log("hey");
+        console.log('movie before add new', movie);
         var newMovie = new Movie(movie);
+        console.log('movie after add new', movie);
+
         this.model.create(newMovie);
       });
     });
