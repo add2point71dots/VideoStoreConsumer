@@ -35,18 +35,16 @@ var MovieListView = Backbone.View.extend({
     },
 
     searchMovies: function() {
-        this.model.fetch({ data: this.getFormData() });
+        // this.model.fetch({ data: this.getFormData() });
         this.model.fetch({
             data: this.getFormData(),
-        }, {
-            success: (function(data) {
-                console.log("It worked!", data);
-
-        }),
-            error: (function(data) {
-                console.log("Failure", data);
-            }),
-        )};
+            success: function(data) {
+                console.log("WE SEARCHED", data);
+            },
+            error: function(data) {
+                console.log("WE DID NOT SEARCH!!!!!!!", data);
+            }
+        });
 
         this.searched = true;
     },
