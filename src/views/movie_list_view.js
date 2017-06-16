@@ -35,14 +35,20 @@ var MovieListView = Backbone.View.extend({
     },
 
     searchMovies: function() {
+        var that = this;
         // this.model.fetch({ data: this.getFormData() });
         this.model.fetch({
             data: this.getFormData(),
             success: function(data) {
-                console.log("WE SEARCHED", data);
+              that.$('#messages').empty();
+              if (that.$('#movie-list').is(':empty')) {
+                that.$('#messages').html('No movies found.');
+              }
+              console.log("WE SEARCHED", data);
             },
             error: function(data) {
-                console.log("WE DID NOT SEARCH!!!!!!!", data);
+              that.$('#messages').html('Error: Search function malfunctioned.');
+              console.log("WE DID NOT SEARCH!!!!!!!", data);
             }
         });
 

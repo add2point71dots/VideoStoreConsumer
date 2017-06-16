@@ -11,10 +11,12 @@ import MovieListView from './views/movie_list_view.js';
 var myMovieList = new MovieList();
 myMovieList.fetch({
     success: function(data) {
-        console.log("It worked!", data);
+      $('messages').empty();  
+      console.log("It worked!", data);
     },
     error: function(data) {
-        console.log("Failure NOOOOOOOO!!!!!!!!", data);
+      $('#messages').html('Error: Could not load inventory.');
+      console.log("Failure NOOOOOOOO!!!!!!!!", data);
     }
 });
 
