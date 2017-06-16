@@ -9,14 +9,21 @@ import MovieView from './views/movie_view.js';
 import MovieListView from './views/movie_list_view.js';
 
 var myMovieList = new MovieList();
-myMovieList.fetch();
+myMovieList.fetch({
+    success: function(data) {
+        console.log("It worked!", data);
+    },
+    error: function(data) {
+        console.log("Failure NOOOOOOOO!!!!!!!!", data);
+    }
+});
 
 // ready to go
 $(document).ready(function() {
-  var myMovieListView = new MovieListView({
-    model: myMovieList,
-    template: _.template($('#movie-item-template').html()),
-    el: 'body'
-  });
-  myMovieListView.render();
+    var myMovieListView = new MovieListView({
+        model: myMovieList,
+        template: _.template($('#movie-item-template').html()),
+        el: 'body'
+    });
+    myMovieListView.render();
 });
