@@ -11,7 +11,7 @@ import MovieListView from './views/movie_list_view.js';
 var myMovieList = new MovieList();
 myMovieList.fetch({
     success: function(data) {
-      $('messages').empty();  
+      $('messages').empty();
       console.log("It worked!", data);
     },
     error: function(data) {

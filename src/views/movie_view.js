@@ -17,11 +17,16 @@ var MovieView = Backbone.View.extend({
         return this;
     },
     events: {
-      'click .add-movie': 'clickedAddMovie'
+      'click .add-movie': 'clickedAddMovie',
+      'click img': 'showDetails'
     },
     clickedAddMovie: function() {
       console.log("clicked add movie");
       this.trigger('addMovie', this.model);
+    },
+    showDetails: function() {
+      var title = this.model.attributes.title;
+      this.model.fetch();
     }
 });
 
