@@ -19,7 +19,7 @@ var MovieView = Backbone.View.extend({
     },
     events: {
       'click .add-movie': 'clickedAddMovie',
-      'click img': 'showDetails'
+      'click .movie_image_details': 'showDetails'
     },
     clickedAddMovie: function() {
       console.log("clicked add movie");
@@ -30,7 +30,8 @@ var MovieView = Backbone.View.extend({
         if (this.model.attributes.id) {
             this.model.fetch();
             this.detailsClicked = !this.detailsClicked;
-            this.render(); 
+            this.render();
+            console.log(this.detailsClicked);
         }
 
     //   console.log('model',this.model);
