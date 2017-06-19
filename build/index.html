@@ -22,15 +22,19 @@
         <h3><%- movie.title %></h3>
         <section class="movie_image_details">
             <% if (detailsClicked) {%>
-                <h2>DETAILS HEREEEE</h2>
-                <% } else { %>
-                    <img src="<%- movie.image_url %>" alt="<%- movie.title %>">
-                    <% } %>
+                <h4>Movie Overview</h4>
+                <p><%- movie.overview %></p>
+                <h4>Release Date: <%- movie.release_date %></h4>
+                <h4>Inventory: <%- movie.inventory %></h4>
+                <h4>Available inventory: <%- movie.available_inventory %></h4>
+            <% } else { %>
+                <img src="<%- movie.image_url %>" alt="<%- movie.title %>">
+            <% } %>
         </section>
-        <% if (searched){ %>
-            <button class='add-movie button'>Pick Me!!</button>
-        <% } %>
-        </script>
-        <script src="/app.bundle.js"></script>
-    </body>
-    </html>
+            <% if (searched){ %>
+                <button class='add-movie button'>Pick Me!!</button>
+            <% } %>
+    </script>
+            <script src="/app.bundle.js"></script>
+</body>
+</html>
