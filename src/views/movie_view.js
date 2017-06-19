@@ -7,11 +7,12 @@ var MovieView = Backbone.View.extend({
     initialize: function(params){
         this.template = params.template;
         this.searched = params.searched;
+        this.detailsClicked = params.detailsClicked;
         this.listenTo(this.model, 'change', this.render);
     },
 
     render: function(){
-        var compiledTemplate = this.template({movie: this.model.toJSON(), searched: this.searched});
+        var compiledTemplate = this.template({movie: this.model.toJSON(), searched: this.searched, detailsClicked: this.detailsClicked});
 
         this.$el.html(compiledTemplate);
         return this;
@@ -24,9 +25,15 @@ var MovieView = Backbone.View.extend({
       console.log("clicked add movie");
       this.trigger('addMovie', this.model);
     },
+
     showDetails: function() {
-      var title = this.model.attributes.title;
-      this.model.fetch();
+        if (this.model.attributes.id) {
+            this.model.fetch();
+            this.detailsClicked = !this.detailsClicked;
+            this.render(); 
+        }
+
+    //   console.log('model',this.model);
     }
 });
 

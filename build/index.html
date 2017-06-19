@@ -19,8 +19,14 @@
     </main>
 
     <script id="movie-item-template" type="text/template">
-        <img src="<%- movie.image_url %>" alt="<%- movie.title %>">
         <h3><%- movie.title %></h3>
+        <section class="movie_image_details">
+            <% if (detailsClicked) {%>
+                <h2>DETAILS HEREEEE</h2>
+                <% } else { %>
+                    <img src="<%- movie.image_url %>" alt="<%- movie.title %>">
+                    <% } %>
+        </section>
         <% if (searched){ %>
             <button class='add-movie button'>Pick Me!!</button>
         <% } %>
