@@ -10,6 +10,7 @@ var MovieListView = Backbone.View.extend({
         this.template = params.template;
         this.searched = params.searched;
         this.listenTo(this.model, 'update', this.render);
+        this.listenTo(this.model, 'sync', this.render);
     },
     render: function() {
         this.$('#movie-list').empty();
@@ -26,6 +27,7 @@ var MovieListView = Backbone.View.extend({
             that.listenTo(myMovieView, 'addMovie', function(movie) {
                 var newMovie = new Movie(movie);
                 this.model.create(newMovie);
+                that.model.fetch();
             });
         });
         return this;
