@@ -10,7 +10,6 @@ var MovieListView = Backbone.View.extend({
         this.template = params.template;
         this.searched = params.searched;
         this.listenTo(this.model, 'update', this.render);
-        // this.listenTo(this.model, 'sync', this.render);
     },
     render: function() {
         this.$('#movie-list').empty();
@@ -28,21 +27,41 @@ var MovieListView = Backbone.View.extend({
                 var newMovie = new Movie(movie);
                 this.model.create(
                   newMovie,
-                  { success: function(response) {
-                    that.model.fetch();
-                  }
-                });
+                  {success: function(response) {
+                      that.model.fetch();
+                      that.$('#messages').html(newMovie.attributes.attributes.title + " was Added");
+                      that.$("#query").val("");
+                  },
+                error: function(response){
+                    that.$('#messages').html("Could not add " + newMovie.attributes.attributes.title)
+                },
+
+
+                }
+                );
             });
         });
         return this;
     },
     events: {
-        'click #search-button': 'searchMovies'
+        'click #search-button': 'searchMovies',
+        'click #home-button': 'homeButton'
+    },
+     homeButton: function(){
+        var that = this;
+        this.model.fetch({
+            success: function(){
+                that.$("#query").val("");
+                that.$("#messages").empty();
+            },
+            error: function(){
+                that.$('#messages').html('Error: Could not load inventory.');
+            }
+        });
     },
 
     searchMovies: function() {
         var that = this;
-        // this.model.fetch({ data: this.getFormData() });
         this.model.fetch({
             data: this.getFormData(),
             success: function(data) {

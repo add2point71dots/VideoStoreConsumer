@@ -27,13 +27,19 @@ var MovieView = Backbone.View.extend({
 
     showDetails: function() {
         if (this.model.attributes.id) {
-            this.model.fetch();
-            this.detailsClicked = !this.detailsClicked;
-            this.render();
-            console.log(this.detailsClicked);
+            var that = this;
+            this.model.fetch({
+                success: function(){
+                    console.log(that.detailsClicked);
+                    that.detailsClicked = !that.detailsClicked;
+                    that.render();
+                },
+                error: function(){
+                    that.$(".no-details").html("Couldn't show movie details");
+                }
+            });
         }
 
-    //   console.log('model',this.model);
     }
 });
 
