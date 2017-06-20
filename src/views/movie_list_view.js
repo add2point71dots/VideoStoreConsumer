@@ -4,6 +4,7 @@ import $ from 'jquery';
 import Movie from '../models/movie.js';
 import MovieList from '../collections/movie_list.js';
 import MovieView from '../views/movie_view.js';
+import CreateRentalView from '../views/create_rental_view.js';
 
 var MovieListView = Backbone.View.extend({
     initialize: function(params) {
@@ -32,8 +33,13 @@ var MovieListView = Backbone.View.extend({
         'click #home-button': 'homeButton',
     },
     goToSetUpRental: function(movie) {
-      console.log('THINGS ARE HAPPENING');
-      console.log(movie);
+      var myCreateRentalView = new CreateRentalView({
+          model: movie,
+          template: _.template($('#rental-creation-template').html()),
+          el: 'body'
+      });
+      myCreateRentalView.render();
+      this.$('#movie-list').empty();
     },
     createMovie: function(movie) {
       var newMovie = new Movie(movie);
