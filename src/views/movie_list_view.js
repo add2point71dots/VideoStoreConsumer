@@ -45,7 +45,7 @@ var MovieListView = Backbone.View.extend({
     },
     events: {
         'click #search-button': 'searchMovies',
-        'click #home-button': 'homeButton'
+        'click #home-button': 'homeButton',
     },
      homeButton: function(){
         var that = this;
