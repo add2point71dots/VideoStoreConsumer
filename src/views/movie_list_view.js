@@ -8,7 +8,6 @@ import MovieView from '../views/movie_view.js';
 var MovieListView = Backbone.View.extend({
     initialize: function(params) {
         this.template = params.template;
-        this.searched = params.searched;
         this.listenTo(this.model, 'update', this.render);
     },
     render: function() {
@@ -28,12 +27,13 @@ var MovieListView = Backbone.View.extend({
                 this.model.create(
                   newMovie,
                   {success: function(response) {
+                      that.searched = false;
                       that.model.fetch();
                       that.$('#messages').html(newMovie.attributes.attributes.title + " was Added");
                       that.$("#query").val("");
                   },
                 error: function(response){
-                    that.$('#messages').html("Could not add " + newMovie.attributes.attributes.title)
+                    that.$('#messages').html("Could not add " + newMovie.attributes.attributes.title);
                 },
 
 
@@ -49,6 +49,7 @@ var MovieListView = Backbone.View.extend({
     },
      homeButton: function(){
         var that = this;
+        this.searched = false;
         this.model.fetch({
             success: function(){
                 that.$("#query").val("");
@@ -58,10 +59,13 @@ var MovieListView = Backbone.View.extend({
                 that.$('#messages').html('Error: Could not load inventory.');
             }
         });
+
     },
 
     searchMovies: function() {
         var that = this;
+        this.searched = true;
+
         this.model.fetch({
             data: this.getFormData(),
             success: function(data) {
@@ -77,7 +81,7 @@ var MovieListView = Backbone.View.extend({
             }
         });
 
-        this.searched = true;
+
     },
 
     getFormData: function() {
