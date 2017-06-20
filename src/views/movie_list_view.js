@@ -22,30 +22,36 @@ var MovieListView = Backbone.View.extend({
                 tagName: 'li'
             });
             that.$('#movie-list').append(myMovieView.render().el);
-            that.listenTo(myMovieView, 'addMovie', function(movie) {
-                var newMovie = new Movie(movie);
-                this.model.create(
-                  newMovie,
-                  {success: function(response) {
-                      that.searched = false;
-                      that.model.fetch();
-                      that.$('#messages').html(newMovie.attributes.attributes.title + " was Added");
-                      that.$("#query").val("");
-                  },
-                error: function(response){
-                    that.$('#messages').html("Could not add " + newMovie.attributes.attributes.title);
-                },
-
-
-                }
-                );
-            });
+            that.listenTo(myMovieView, 'addMovie', that.createMovie);
+            that.listenTo(myMovieView, 'setUpRental', that.goToSetUpRental);
         });
         return this;
     },
     events: {
         'click #search-button': 'searchMovies',
         'click #home-button': 'homeButton',
+    },
+    goToSetUpRental: function(movie) {
+      console.log('THINGS ARE HAPPENING');
+      console.log(movie);
+    },
+    createMovie: function(movie) {
+      var newMovie = new Movie(movie);
+      var that = this;
+      this.model.create(
+        newMovie,
+        {
+          success: function(response) {
+            that.searched = false;
+            that.model.fetch();
+            that.$('#messages').html(newMovie.attributes.attributes.title + " was Added");
+            that.$("#query").val("");
+          },
+          error: function(response){
+            that.$('#messages').html("Could not add " + newMovie.attributes.attributes.title);
+          }
+        }
+      );
     },
      homeButton: function(){
         var that = this;
