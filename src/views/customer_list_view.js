@@ -10,8 +10,8 @@ var CustomerListView = Backbone.View.extend({
         this.template = params.template;
     },
     render: function() {
-        var that = this;
         console.log("CUSTOMER LIST VIEW MODEL ", this.model);
+        var that = this;
         this.model.each(function(customer) {
             var myCustomerView = new CustomerView({
                 model: customer,
