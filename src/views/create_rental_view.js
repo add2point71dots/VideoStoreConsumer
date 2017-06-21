@@ -34,12 +34,22 @@ var CreateRentalView = Backbone.View.extend({
   },
   createRental: function(e) {
     e.preventDefault();
-
+    var that = this;
     var rental = new Rental({'customer_id': this.$('#customer-menu').val(),'due_date': this.$('#due-date').val()});
-
     var rentalList = new RentalList(rental);
-
-    rentalList.create(rental, { title: this.model.attributes.title});
+    var movieTitle = this.model.attributes.title;
+    rentalList.create(
+      rental,
+      { title: movieTitle,
+        success: function() {
+          that.$('#messages').html(movieTitle + ' was successfully rented!');
+        },
+        error: function(response) {
+          that.$('#messages').html('Could not rent movie. :(');
+          console.log("ERROR: Could not rent movie.");
+        }
+      }
+    );
   }
 });
 
