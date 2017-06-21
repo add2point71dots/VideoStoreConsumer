@@ -22,8 +22,14 @@
 
     <script id="rental-creation-template" type="text/template">
       <h2>Rent <%- movie.title %></h2>
-    
-      <select id="customer-menu"></select>
+      <select id="customer-menu">
+          <% for( var i = 0; i < customers.length; i++){ %>
+              <option value='<%- customers[i].id %>'>
+                <%- customers[i].name%>
+              </option>
+          <% } %>
+      </select>
+
     </script>
 
     <script id="customer-listing-template" type="text/template">

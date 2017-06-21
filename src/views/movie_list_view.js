@@ -35,9 +35,10 @@ var MovieListView = Backbone.View.extend({
     },
     goToSetUpRental: function(movie) {
         var myCustomerList = new CustomerList();
-        myCustomerList.fetch();
+        myCustomerList.fetch( {data: {n:200} });
         console.log("CUSTOMER LIST", myCustomerList);
-      var myCreateRentalView = new CreateRentalView({
+
+        var myCreateRentalView = new CreateRentalView({
           model: movie,
           collection: myCustomerList,
           template: _.template($('#rental-creation-template').html()),

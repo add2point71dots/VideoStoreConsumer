@@ -14,14 +14,20 @@ var CreateRentalView = Backbone.View.extend({
     this.listenTo(this.collection, 'update', this.render);
   },
   render: function() {
-      console.log("Collection", this.collection);
     this.$('#messages').empty();
+    var that = this;
 
     var compiledTemplate = this.template( { movie: this.model.toJSON(), customers: this.collection.toJSON() });
+
+    this.collection.each(function(customer){
+        that.$('customer-menu').append('<option>' + customer.attributes.name + '</option>')
+        // console.log(customer.attributes.name);
+    });
+
     this.$('#rental-creation').html(compiledTemplate);
 
     return this;
-  }
+}
 });
 
 export default CreateRentalView;
