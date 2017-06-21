@@ -34,11 +34,12 @@ var CreateRentalView = Backbone.View.extend({
   },
   createRental: function(e) {
     e.preventDefault();
-    var rental = new Rental({'customer_id': this.$('#customer-menu').val(), 'movie_id': this.model.attributes.id, 'due_date': '2017-07-03'});
+
+    var rental = new Rental({'customer_id': this.$('#customer-menu').val(),'due_date': this.$('#due-date').val()});
+
     var rentalList = new RentalList(rental);
 
-    console.log("RENTAL LOOKS LIKE", rental);
-    rentalList.create(rental);
+    rentalList.create(rental, { title: this.model.attributes.title});
   }
 });
 
