@@ -10,8 +10,14 @@ var CreateRentalView = Backbone.View.extend({
     this.template = params.template;
   },
   render: function() {
+    this.$('#messages').empty();
     console.log("RENDERING A MOVIE RENTAL THINGY");
-    var compiledTemplate = this.template( { movie: this.model.toJSON()});
+
+    var myCustomerList = new CustomerList();
+    myCustomerList.fetch();
+
+    var compiledTemplate = this.template( { movie: this.model.toJSON(), customers: myCustomerList});
+    console.log("My Customers", myCustomerList);
     console.log(compiledTemplate);
     this.$('#rental-creation').html(compiledTemplate);
     return this;

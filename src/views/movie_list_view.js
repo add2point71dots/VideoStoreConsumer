@@ -44,6 +44,7 @@ var MovieListView = Backbone.View.extend({
     createMovie: function(movie) {
       var newMovie = new Movie(movie);
       var that = this;
+
       this.model.create(
         newMovie,
         {
@@ -62,6 +63,7 @@ var MovieListView = Backbone.View.extend({
      homeButton: function(){
         var that = this;
         this.searched = false;
+         this.$('#rental-creation').empty();
         this.model.fetch({
             success: function(){
                 that.$("#query").val("");
@@ -77,6 +79,7 @@ var MovieListView = Backbone.View.extend({
     searchMovies: function() {
         var that = this;
         this.searched = true;
+        this.$('#rental-creation').empty();
 
         this.model.fetch({
             data: this.getFormData(),
