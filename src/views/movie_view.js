@@ -20,12 +20,16 @@ var MovieView = Backbone.View.extend({
     events: {
       'click .add-movie': 'clickedAddMovie',
       'click .movie_image_details': 'showDetails',
-      'click .rental-button': 'clickedSetUpRental'
+      'click .rental-button': 'clickedSetUpRental',
+      'click .checkin-button': 'clickedSetUpCheckIn'
     },
 
     clickedSetUpRental: function(){
         this.trigger('setUpRental', this.model);
+    },
 
+    clickedSetUpCheckIn: function() {
+      this.trigger('setUpCheckIn', this.model);
     },
 
     clickedAddMovie: function() {

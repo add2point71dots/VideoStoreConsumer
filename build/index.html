@@ -24,7 +24,7 @@
 
     <script id="rental-creation-template" type="text/template">
       <h2>Rent <%- movie.title %></h2>
-      <form>
+      <form id="checkout-form">
         <section class="small-12 medium-6 columns">
           <label for="customer-menu">Pick a customer:</label>
           <select id="customer-menu">
@@ -40,6 +40,21 @@
           <input type="date" id="due-date">
         </section>
         <input type="submit" id="checkout-button" class="button" value="Check It Out!">
+      </form>
+    </script>
+
+    <script id="checkin-template" type="text/template">
+      <h2>Check in <%- movie.title %></h2>
+      <form id="checkin-form">
+        <label for="customer-menu">Pick a customer:</label>
+        <select id="customer-menu">
+            <% for( var i = 0; i < customers.length; i++){ %>
+                <option value='<%- customers[i].id %>'>
+                  <%- customers[i].name%>
+                </option>
+            <% } %>
+        </select>
+        <input type="submit" id="checkin-button" class="button" value="Return it!">
       </form>
     </script>
 
@@ -71,6 +86,7 @@
                 <button class='add-movie button'>Pick Me!!</button>
             <% } else { %>
                 <button class='rental-button button'>Rent Me</button>
+                <button class='checkin-button button'>Check In</button>
             <% } %>
     </script>
     <script src="/app.bundle.js"></script>

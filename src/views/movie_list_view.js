@@ -3,9 +3,10 @@ import _ from 'underscore';
 import $ from 'jquery';
 import Movie from '../models/movie.js';
 import MovieList from '../collections/movie_list.js';
-import MovieView from '../views/movie_view.js';
+import MovieView from './movie_view.js';
 import CustomerList from '../collections/customer_list.js';
-import CreateRentalView from '../views/create_rental_view.js';
+import CreateRentalView from './create_rental_view.js';
+import CheckInRentalView from './checkin_rental_view.js';
 
 var MovieListView = Backbone.View.extend({
     initialize: function(params) {
@@ -26,6 +27,7 @@ var MovieListView = Backbone.View.extend({
             that.$('#movie-list').append(myMovieView.render().el);
             that.listenTo(myMovieView, 'addMovie', that.createMovie);
             that.listenTo(myMovieView, 'setUpRental', that.goToSetUpRental);
+            that.listenTo(myMovieView, 'setUpCheckIn', that.goToSetUpCheckIn);
         });
         return this;
     },
@@ -33,6 +35,7 @@ var MovieListView = Backbone.View.extend({
         'click #search-button': 'searchMovies',
         'click #home-button': 'homeButton',
     },
+
     goToSetUpRental: function(movie) {
         var myCustomerList = new CustomerList();
         myCustomerList.fetch( {data: {n:200} });
@@ -47,6 +50,21 @@ var MovieListView = Backbone.View.extend({
       myCreateRentalView.render();
       this.$('#movie-list').empty();
     },
+
+    goToSetUpCheckIn: function(movie) {
+      var myCustomerList = new CustomerList();
+      myCustomerList.fetch( {data: { n: 200 } });
+
+      var myCheckInRentalView = new CheckInRentalView({
+        model: movie,
+        collection: myCustomerList,
+        template: _.template($('#checkin-template').html()),
+        el: 'body'
+      });
+      myCheckInRentalView.render();
+      this.$('#movie-list').empty();
+    },
+
     createMovie: function(movie) {
       var newMovie = new Movie(movie);
       var that = this;
