@@ -47,9 +47,10 @@
             <% if (detailsClicked) {%>
                 <h4>Movie Overview</h4>
                 <p><%- movie.overview %></p>
-                <h4>Release Date: <%- movie.release_date %></h4>
+                <h4>Release Date:</h4>
+                <p><%- movie.release_date %></p>
                 <h4>Inventory: <%- movie.inventory %></h4>
-                <h4>Available inventory: <%- movie.available_inventory %></h4>
+                <h4>Available: <%- movie.available_inventory %></h4>
             <% } else { %>
                 <img src="<%- movie.image_url %>" alt="<%- movie.title %>">
                 <p class="no-details"></p>

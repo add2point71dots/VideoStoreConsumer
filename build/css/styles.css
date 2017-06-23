@@ -1,45 +1,54 @@
 @include foundation-everything;
+@import url('https://fonts.googleapis.com/css?family=Frijole|Roboto|Salsa');
 
-main {
-    background: lightblue;
+body {
+    /*background: #24303C;*/
+    font-family: 'Roboto', sans-serif;
+    background: #24303C;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #24303C, #577592);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #24303C, #577592); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+header {
+    padding: 0.5rem;
 }
 
-header {
-  background-color: lightgreen;
-  padding: 0.5rem;
+h1 {
+    font-family: 'Frijole', cursive;
+    color: white;
 }
 
 #completed-checkbox {
-  display: inline;
+    display: inline;
 }
 
 label {
-  display: inline;
+    display: inline;
 }
 
 button.success {
-  margin-right: 1.2rem;
-  display: inline;
+    margin-right: 1.2rem;
+    display: inline;
 }
 
 aside.create-tasklist {
-  background-color: navy;
-  color: #FFFFFF;
+    background-color: navy;
+    color: #FFFFFF;
 }
 aside label {
-  color: #FFFFFF;
+    color: #FFFFFF;
 }
 
 .completed {
-  text-decoration: line-through;
+    text-decoration: line-through;
 }
 
 div {
-  display: inline;
+    display: inline;
 }
 
 main {
-  padding: 1%;
+    padding: 1%;
 }
 
 #movie-list li {
@@ -48,23 +57,23 @@ main {
     /*border: solid 1px black;*/
     height: 500px;
     overflow: scroll;
-    background: pink;
+    background: #58cdb5;
 }
 
 #movie-list li:nth-child(5n + 1) {
-  background: yellow;
+    background: #75d6c1;
 }
 
 #movie-list li:nth-child(5n + 2) {
-  background: orange;
+    background: #1ABB99;
 }
 
 #movie-list li:nth-child(5n + 3) {
-  background: lime;
+    background: #138c72;
 }
 
 #movie-list li:nth-child(5n + 4) {
-  background: lavender;
+    background: #19b695;
 }
 
 #movie-list {
@@ -72,6 +81,19 @@ main {
     padding: 0;
 }
 
+
 #movie-list .movie-title{
     min-height: 100px;
+    font-family: 'Frijole', cursive;
+}
+
+#movie-list .movie_image_details h4{
+    color: #24303C;
+    font-family: 'Salsa', cursive;
+}
+
+#rental-creation h2, #rental-creation label{
+    font-family: 'Frijole', cursive;
+    color: white;
+
 }
