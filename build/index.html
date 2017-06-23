@@ -5,11 +5,12 @@
     <link rel="stylesheet" type="text/css" href="css/_settings.css">
     <link rel="stylesheet" type="text/css" href="css/foundation.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <title>Video Store</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <title>Spicy Flix</title>
 </head>
 <body>
     <header class="row">
-        <h1>Video Store</h1>
+        <h1><a href="http://localhost:8081">Spicy Flix</a></h1>
     </header>
     <main class="row">
 
@@ -24,15 +25,20 @@
     <script id="rental-creation-template" type="text/template">
       <h2>Rent <%- movie.title %></h2>
       <form>
-        <label for="customer-menu">Pick a customer:</label>
-        <select id="customer-menu">
-            <% for( var i = 0; i < customers.length; i++){ %>
-                <option value='<%- customers[i].id %>'>
-                  <%- customers[i].name%>
-                </option>
-            <% } %>
-        </select>
-        <input type="date" id="due-date"/>
+        <section class="small-12 medium-6 columns">
+          <label for="customer-menu">Pick a customer:</label>
+          <select id="customer-menu">
+              <% for( var i = 0; i < customers.length; i++){ %>
+                  <option value='<%- customers[i].id %>'>
+                    <%- customers[i].name%>
+                  </option>
+              <% } %>
+          </select>
+        </section>
+        <section class="small-12 medium-6 columns">
+          <label for="date">Pick a due date:</label>
+          <input type="date" id="due-date">
+        </section>
         <input type="submit" id="checkout-button" class="button" value="Check It Out!">
       </form>
     </script>
@@ -43,7 +49,12 @@
 
     <script id="movie-item-template" type="text/template">
         <h3 class='movie-title'><%- movie.title %></h3>
-        <section class="movie_image_details">
+
+        <% if (searched){ %>
+            <section>
+        <% } else { %>
+            <section class="movie_image_details">
+        <% } %>
             <% if (detailsClicked) {%>
                 <h4>Movie Overview</h4>
                 <p><%- movie.overview %></p>

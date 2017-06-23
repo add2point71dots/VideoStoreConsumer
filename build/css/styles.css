@@ -13,9 +13,14 @@ header {
     padding: 0.5rem;
 }
 
-h1 {
+h1 a {
+    text-decoration: none;
     font-family: 'Frijole', cursive;
     color: white;
+}
+
+h1 a:hover {
+  color: white;
 }
 
 #completed-checkbox {
@@ -55,7 +60,7 @@ main {
     text-align: center;
     list-style-type: none;
     /*border: solid 1px black;*/
-    height: 500px;
+    height: 450px;
     overflow: scroll;
     background: #58cdb5;
 }
@@ -83,7 +88,9 @@ main {
 
 
 #movie-list .movie-title{
-    min-height: 100px;
+    height: 85px;
+    overflow: scroll;
+    /*overflow: hidden;*/
     font-family: 'Frijole', cursive;
 }
 
@@ -92,8 +99,35 @@ main {
     font-family: 'Salsa', cursive;
 }
 
+#movie-list img {
+  border-radius: 5px;
+}
+
+.movie_image_details img:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.movie_image_details {
+  cursor: pointer;
+}
+
 #rental-creation h2, #rental-creation label{
     font-family: 'Frijole', cursive;
     color: white;
+}
 
+.button {
+  border-radius: 5px;
+  border: solid white 1px;
+  background: #24303C;
+  margin-right: 1%;
+  font-family: 'Salsa', cursive;
+}
+
+.button:hover {
+  background: #577592;
+}
+
+#messages {
+  color: white;
 }
