@@ -17,7 +17,7 @@
         <button id="home-button" class="button">Return to Inventory</button>
         <section id="messages"></section>
         <section id="rental-creation"></section>
-        <ul id="movie-list"></ul>
+        <ul id="movie-list" class="row small-up-2 medium-up-3 large-up-4"></ul>
     </main>
 
     <script id="rental-creation-template" type="text/template">
@@ -41,7 +41,7 @@
     </script>
 
     <script id="movie-item-template" type="text/template">
-        <h3><%- movie.title %></h3>
+        <h3 class='movie-title'><%- movie.title %></h3>
         <section class="movie_image_details">
             <% if (detailsClicked) {%>
                 <h4>Movie Overview</h4>

@@ -37,8 +37,19 @@ aside label {
 div {
   display: inline;
 }
-/*
-* {
-  border-style: solid;
+
+#movie-list li {
+    text-align: center;
+    list-style-type: none;
+    border: solid 1px black;
+
 }
-*/
+
+#movie-list {
+    margin: 0;
+    padding: 0;
+}
+
+#movie-list .movie-title{
+    min-height: 100px;
+}

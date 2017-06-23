@@ -5,8 +5,7 @@ var Rental = Backbone.Model.extend({
       if (method=='create'){
           options.url = model.collection.url + '/' + options.title + '/check-out';
       }
-      console.log("MODELLLL", model);
-      console.log("OPTIONNNNNSSS", options);
+      console.log('OPTIONS', options.url);
       return Backbone.sync(method, model, options);
   }
 });
